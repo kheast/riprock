@@ -78,6 +78,7 @@ upload_config:
 	@echo "Uploading config for Lambda function"
 	export BUCKET_NAME=$(CFG_BUCKET);\
 	export KEY_NAME=$(CFG_NAME);\
+	untabify $(NOTIFY_CFG);\
 	./notifier.py config upload --profile=$(PROFILE) --path=$(NOTIFY_CFG)
 
 

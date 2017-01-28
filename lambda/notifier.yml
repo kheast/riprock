@@ -1,3 +1,6 @@
+# file: notifier.yml
+# WARNING: be sure to convert any tabs to spaces
+
 # Info necessary to access the Twilio API.
 twilio:
     account_sid: YOUR_ACCOUNT_SID
