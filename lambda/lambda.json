@@ -1,0 +1,20 @@
+{
+    "name": "EM247-Notifier",
+    "description": "Sends emergency messages when IoTButton is pressed.",
+    "region": "us-west-2",
+    "runtime": "python2.7",
+    "handler": "notifier.lambda_handler",
+    "requirements": ["twilio", "dotmap", "PyYAML"],
+    "ignore": [
+	"\\.yml$",
+	"\\.git$",
+	"\\.pyc$",
+	"\\.env$",
+	"\\.json$",
+	"archive$",
+	"iamrole.py",
+	"Makefile"
+    ],
+    "timeout": 15,
+    "memory": 512
+}

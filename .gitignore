@@ -1,0 +1,9 @@
+*~
+*.pyc
+\#*\#
+*.log
+.DS_Store
+.\#*
+certs
+lambda/notifier-EM247.yml
+lambda/archive

@@ -1,0 +1,43 @@
+# Info necessary to access the Twilio API.
+twilio:
+    account_sid: YOUR_ACCOUNT_SID
+    auth_token:  YOUR_AUTH_TOKEN
+    source_number: '+15555551211'
+
+# Configuration/behavior for notifier.py
+notifier:
+    # Defines the person contained in the messages.  Additional
+    # attributes may be added and subsequently referred to in messages.
+    person:
+        name:
+            YOUR NAME
+        address:
+            YOUR ADDRESS
+        age:
+            YOUR AGE
+        sex:
+            YOUR SEX
+
+    # Defines the voice message to be sent.  Message will be formatted
+    # using string.format() and may contain references to the personal
+    # info defined above.  If no number is provided, message is not
+    # sent.
+    #
+    # The message should be a string containing a valid Twilio Markup
+    # Language (TWIML) instructions. https://www.twilio.com/docs/api/twiml
+    voice_numbers: 
+        - '+15555551212'
+    voice_message: >-
+        <Response>
+            <Say loop="5">
+                This is an emergency.  A {age} year old {sex}, {name},
+                needs medical assistance.  The address {address}.
+            </Say>
+        </Response>
+
+    # Defines the SMS message to be sent.
+    sms_numbers:   
+        - '+15555551212'
+        - '+15555551213'
+    sms_message: >-
+        {name} needs medical assistance. {address}.
