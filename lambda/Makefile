@@ -71,6 +71,16 @@ create_function:
 
 
 # Step 3
+# Validate the config file.
+validate_config:
+	@echo "Validate config file syntax"
+	export BUCKET_NAME=$(CFG_BUCKET);\
+	export KEY_NAME=$(CFG_NAME);\
+	untabify $(NOTIFY_CFG);\
+	./notifier.py config validate --path=$(NOTIFY_CFG)
+
+
+# Step 4
 # Upload the notifier config file which defines how notifications are sent.
 # Replace notifier-EM247.yml with your notifier.yml file.
 NOTIFY_CFG := notifier-EM247.yml
@@ -82,7 +92,7 @@ upload_config:
 	./notifier.py config upload --profile=$(PROFILE) --path=$(NOTIFY_CFG)
 
 
-# Step 4
+# Step 5
 # Create an IOT Rule that will invoke the Lambda handler from Step 2
 # when an IoT Button with the specified serial number is pressed.
 create_rule:
@@ -90,7 +100,7 @@ create_rule:
 	./helper.py create-topic-rule $(RULE_NAME) $(LFUNC_NAME) $(SERIAL_NUMBER) $(PROFILE)
 
 
-# Step 5
+# Step 6
 # Test the function by invoking from the AWS CLI.
 IOTBUTTON_EVENT := '{"serialNumber": "'$(SERIAL_NUMBER)'", "clickType": "SINGLE", "batteryVoltage": "1975 mV"}'
 lambdatest:
